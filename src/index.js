@@ -10,6 +10,7 @@ let imagesArray = '';
 const searchForm = document.querySelector('.search-form');
 const loadBtn = document.querySelector('.load-more');
 const divGallery = document.querySelector('.gallery');
+const divScroll = document.querySelector('.scroll');
 
 searchForm.addEventListener('submit', onSubmitForm);
 loadBtn.addEventListener('click', onMore);
@@ -49,7 +50,8 @@ async function payse() {
 
       divGallery.insertAdjacentHTML('beforeend', onCardsMarkup(imagesArray));
     });
-  var lightbox = new SimpleLightbox('.photo-card .gallery__link', { captionsData: 'alt', captionDelay: '250' });
+  const lightbox = new SimpleLightbox('.photo-card .gallery__link', { captionsData: 'alt', captionDelay: '250' });
+  lightbox.refresh();
 }
 
 
@@ -80,23 +82,23 @@ function onPage() {
     page += 1;
 }
 
-const options = {
-  rootMargin: '200px',
-  threshold: 1.0,
-};
+// const options = {
+//   rootMargin: '200px',
+//   threshold: 1.0,
+// };
 
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (input === '') {
-      return;
-    }
+// const observer = new IntersectionObserver(entries => {
+//   entries.forEach(entry => {
+//     if (input === '') {
+//       return;
+//     }
 
-    if (entry.isIntersecting) {
-      onPage();
-      payse();
-    }
-  });
-}, options);
+//     if (entry.isIntersecting) {
+//       onPage();
+//       payse();
+//     }
+//   });
+// }, options);
 
-observer.observe(document.querySelector('.scroll'));
+// observer.observe(divScroll);
