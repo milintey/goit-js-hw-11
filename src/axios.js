@@ -7,5 +7,5 @@ const axiosParam = 'image_type=photo&orientation=horizontal&safesearch=true';
 export async function axiosGet(query, page) {
     const url = `?${key}&q=${query}&${axiosParam}&page=${page}&per_page=40`
     const response = await axios.get(url);
-    return response.data.hits;
+    return response.data;
 }
